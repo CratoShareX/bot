@@ -1,0 +1,23 @@
+bot:
+  prefix: "<"
+  token: ""
+  options:
+    compress: true
+    intents:
+      - guildMessages
+      - directMessages
+      - guilds
+
+logging:
+  appenders:
+    default: {type: 'stdout'}
+  categories:
+    default: {appenders: ['default'], level: 'debug'}
+
+crato:
+  baseURL: ""
+  apiKey: ""
+
+developers:
+  - 100690330336129024
+  - 438888690652020737

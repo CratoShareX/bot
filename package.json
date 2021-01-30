@@ -1,0 +1,36 @@
+{
+  "name": "@crato/bot",
+  "version": "1.0.0",
+  "description": "The Official Bot for Crato.gg",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CratoShareX/bot.git"
+  },
+  "author": "",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/CratoShareX/bot/issues"
+  },
+  "homepage": "https://crato.gg",
+  "dependencies": {
+    "@dxz/blueprint": "^2.2.2",
+    "@helperdiscord/centra": "^1.1.4",
+    "common-tags": "^1.8.0",
+    "eris": "^0.14.0",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/common-tags": "^1.8.0",
+    "@types/node": "^14.14.22",
+    "gts": "^3.1.0",
+    "typescript": "^4.0.3"
+  }
+}
