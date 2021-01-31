@@ -4,13 +4,11 @@ import {parse as parser} from 'yaml';
 import {commandList, groupList} from '../groups/GroupList';
 import {eventList} from '../events/EventList';
 import {FullConfig} from "../structures/Types";
-import {API} from "./API";
+import {apiExtension} from "../structures/Extensions";
 
 export class Client extends Blueprint<FullConfig> {
-  api: API;
   constructor() {
     super(join(__dirname, '../Config.yml'), {parser});
-    this.api = new API(this);
   }
 
   private setupCommands() {
@@ -40,6 +38,7 @@ export class Client extends Blueprint<FullConfig> {
       this.setupCommands();
       this.setupGroups();
       this.setupEvents();
+      this.inject(apiExtension);
     } catch (e) {
       this.core.logger?.getLogger('Client').fatal(e.message);
     }

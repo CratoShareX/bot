@@ -1,7 +1,8 @@
-import {Blueprint, Message, BaseConfig} from "@dxz/blueprint";
+import {Blueprint, Message} from "@dxz/blueprint";
+import {FullConfig} from "../structures/Types";
 
 export async function messageCreate(
-    ref: Blueprint<BaseConfig>,
+    ref: Blueprint<FullConfig>,
     ctx: Message
 ): Promise<Message | void> {
     if (ctx.author.bot) return;

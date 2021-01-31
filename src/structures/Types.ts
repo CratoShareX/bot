@@ -8,7 +8,7 @@ export interface GroupType {
 
 interface CratoConfig {
   crato: {
-    baseUrl: string;
+    baseURL: string;
     apiKey: string;
   }
 }

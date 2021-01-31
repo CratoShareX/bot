@@ -8,7 +8,8 @@
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc",
-    "fix": "gts fix"
+    "fix": "gts fix",
+    "start": "node dist/bot.js"
   },
   "repository": {
     "type": "git",

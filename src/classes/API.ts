@@ -1,6 +1,6 @@
 import req from "@helperdiscord/centra";
 import {HTTPMethod} from "@helperdiscord/centra/dist/lib/CentraRequest";
-import {Blueprint} from "@dxz/blueprint";
+import {Internals} from "@dxz/blueprint";
 import {FullConfig} from "../structures/Types";
 
 interface Req {
@@ -10,15 +10,15 @@ interface Req {
 }
 
 export class API {
-    config: Blueprint<FullConfig>;
-    constructor(config: Blueprint<FullConfig>) {
+    config: Internals<FullConfig>;
+    constructor(config: Internals<FullConfig>) {
         this.config = config;
     }
 
     async request(data: Req) {
         try {
-            const baseURL = this.config.core.config.crato.baseUrl;
-            const apiKey = this.config.core.config.crato.apiKey;
+            const baseURL = this.config.config.crato.baseURL;
+            const apiKey = this.config.config.crato.apiKey;
 
             const res = await req(`${baseURL}${data.endpoint}`)
                 .header("Authorization", apiKey)
