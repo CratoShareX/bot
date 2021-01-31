@@ -10,6 +10,7 @@ interface CratoConfig {
   crato: {
     baseURL: string;
     apiKey: string;
+    boosterRole: string;
   }
 }
 

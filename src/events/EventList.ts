@@ -1,5 +1,6 @@
 import {ready} from './Ready';
-import {messageCreate} from "./Message";
+import {guildCreate} from "./GuildCreate";
+import {guildMemberUpdate} from "./GuildMemberUpdate";
 
 export const eventList = [
   {
@@ -7,7 +8,11 @@ export const eventList = [
     eventClass: ready,
   },
   {
-    eventName: "messageCreate",
-    eventClass: messageCreate
+    eventName: 'guildCreate',
+    eventClass: guildCreate
+  },
+  {
+    eventName: 'guildMemberUpdate',
+    eventClass: guildMemberUpdate
   }
 ];

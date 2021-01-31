@@ -17,6 +17,7 @@ logging:
 crato:
   baseURL: ""
   apiKey: ""
+  boosterRole: ""
 
 developers:
   - 100690330336129024
