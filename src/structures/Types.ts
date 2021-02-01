@@ -11,6 +11,7 @@ interface CratoConfig {
     baseURL: string;
     apiKey: string;
     boosterRole: string;
+    boostChannel: string;
   }
 }
 

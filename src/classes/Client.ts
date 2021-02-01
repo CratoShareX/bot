@@ -1,4 +1,4 @@
-import {Blueprint} from '@dxz/blueprint';
+import {Blueprint, Override} from '@dxz/blueprint';
 import {join} from 'path';
 import {parse as parser} from 'yaml';
 import {commandList, groupList} from '../groups/GroupList';
@@ -18,6 +18,14 @@ export class Client extends Blueprint<FullConfig> {
   }
 
   private setupGroups() {
+    // Register the developer group, always.
+    const overrides: Override[] = [];
+    for (const developer of this.core.config.developers) overrides.push({type: "user", id: developer});
+    this.registry.groups.register("owners", {
+      overrides,
+      permissions: ["guild.administrator"]
+    });
+    // Then proceed to add the rest of the groups.
     for (const group of groupList) {
       this.registry.groups.register(group.groupName, {
         inherits: group.extends ?? undefined,

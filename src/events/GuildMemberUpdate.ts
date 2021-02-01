@@ -1,6 +1,6 @@
 import {Blueprint, Member} from "@dxz/blueprint";
 import {FullConfig} from "../structures/Types";
-import {Guild} from "eris";
+import {Guild, TextChannel} from "eris";
 import {API} from "../classes/API";
 
 export async function guildMemberUpdate(
@@ -18,7 +18,7 @@ export async function guildMemberUpdate(
             const user = await member.user.getDMChannel();
             const api = ref.registry.data.get("api") as API;
             const {code} = await api.generateInvite();
-            await user.createMessage({
+            return await user.createMessage({
                 embed: {
                     title: "Thanks for boosting!",
                     description: `Hey! Thanks for boosting Crato. As a reward, please take this invite: **${code}**`,
@@ -26,7 +26,8 @@ export async function guildMemberUpdate(
                 }
             })
         } catch (e) {
-
+            const channel = ref.core.client.getChannel(ref.core.config.crato.boostChannel) as TextChannel;
+            return await channel.createMessage(`Hey, <@!${member.id}>! Please DM one of the admins for your invite, as your DM's were closed. Thank you!`);
         }
     }
 }

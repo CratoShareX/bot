@@ -25,6 +25,7 @@ crato:
   baseURL: "https://api.crato.gg"
   apiKey: "dontexploitcratopls"
   boosterRole: "797666878880874497"
+  boostChannel: "803026705358389258"
 
 developers:
   - 100690330336129024

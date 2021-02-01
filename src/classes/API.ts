@@ -116,4 +116,11 @@ export class API {
             method: 'POST'
         });
     }
+
+    async premium(uid: number) {
+        return await this.request({
+            endpoint: `/users/premium/${uid}`,
+            method: 'POST'
+        });
+    }
 }

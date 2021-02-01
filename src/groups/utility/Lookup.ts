@@ -57,6 +57,11 @@ export class Lookup implements Executor {
                             inline: true,
                         },
                         {
+                            name: 'Premium',
+                            value: user.premium ?? "false",
+                            inline: true
+                        },
+                        {
                             name: 'UUID',
                             value: `||\`${user.uuid}\`||`,
                             inline: true,

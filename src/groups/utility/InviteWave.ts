@@ -4,7 +4,7 @@ import {API} from "../../classes/API";
 
 @Command({
     aliases: ['invitewave'],
-    groups: ['Admin'],
+    groups: ['owners'],
     name: 'invite_wave'
 })
 export class InviteWave implements Executor {

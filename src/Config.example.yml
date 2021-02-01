@@ -18,6 +18,7 @@ crato:
   baseURL: ""
   apiKey: ""
   boosterRole: ""
+  boostChannel: ""
 
 developers:
   - 100690330336129024

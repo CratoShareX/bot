@@ -8,6 +8,7 @@ import {InviteWave} from "./utility/InviteWave";
 import {Blacklist} from "./utility/Blacklist";
 import {Help} from "./information/Help";
 import {Stats} from "./information/Stats";
+import {Premium} from "./management/Premium";
 
 export const groupList: GroupType[] = [
   {
@@ -65,5 +66,9 @@ export const commandList = [
   {
     commandName: 'stats',
     commandClass: Stats
+  },
+  {
+    commandName: 'premium',
+    commandClass: Premium
   }
 ];

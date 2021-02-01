@@ -22,10 +22,12 @@
   },
   "homepage": "https://crato.gg",
   "dependencies": {
-    "@dxz/blueprint": "^2.2.2",
+    "@dxz/blueprint": "^2.2.3",
     "@helperdiscord/centra": "^1.1.4",
     "common-tags": "^1.8.0",
     "eris": "^0.14.0",
+    "helperis": "^1.2.4",
+    "reflect-metadata": "^0.1.13",
     "yaml": "^1.10.0"
   },
   "devDependencies": {
