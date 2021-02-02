@@ -1,4 +1,4 @@
-![Crato.gg](https://www.crato.gg/logo.png)
+![Crato.gg](https://assets.crato.gg/logo.png)
 ## Crato.gg (Bot)
 
 ### Setup
