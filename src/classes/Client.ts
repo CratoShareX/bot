@@ -19,10 +19,8 @@ export class Client extends Blueprint<FullConfig> {
 
   private setupGroups() {
     // Register the developer group, always.
-    const overrides: Override[] = [];
-    for (const developer of this.core.config.developers) overrides.push({type: "user", id: developer});
     this.registry.groups.register("Owners", {
-      overrides,
+      overrides: this.core.config.developers.map((user) => ({type: "user", id: user})),
       permissions: ["guild.administrator"]
     });
     // Then proceed to add the rest of the groups.

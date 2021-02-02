@@ -42,7 +42,7 @@ export class Help implements Executor {
                             Aliases: **${cmdAliases.join(", ") ? cmdAliases.join(", ") : "None"}**
                             Permission Groups: **${cmdGroups.join(", ") ? cmdGroups.join(", ") : "Everyone"}**
                         `,
-                        true
+                        false
                     )
                 }
                 return await ctx.channel.createMessage({
