@@ -4,12 +4,15 @@ import {API} from "../../classes/API";
 
 @Command({
     aliases: [],
-    groups: ["owners"],
+    groups: ["Owners"],
     name: "premium"
 })
 export class Premium implements Executor {
     async callback(ctx: Message, args: string[], ref: Blueprint<BaseConfig>) {
-        if (args[0] && !parseInt(args[0])) {
+        if (!args[0]) {
+            return await dispatch_error_embed(ctx, "No argument provided for member.");
+        }
+        if (!isNaN(parseInt(args[0]))) {
             return await dispatch_error_embed(ctx, "UID is not a number.");
         }
         try {

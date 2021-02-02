@@ -4,7 +4,7 @@ import {API} from "../../classes/API";
 
 @Command({
     aliases: ["adddomain", "domain_add"],
-    groups: ["owners"],
+    groups: ["Owners"],
     name: "add_domain"
 })
 export class AddDomain implements Executor {

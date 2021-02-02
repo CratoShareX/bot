@@ -10,7 +10,7 @@ import {Help} from "./information/Help";
 import {Stats} from "./information/Stats";
 import {Premium} from "./management/Premium";
 
-export const groupList: GroupType[] = [
+export const groups: GroupType[] = [
   {
     groupName: 'User',
     groupPermissions: [

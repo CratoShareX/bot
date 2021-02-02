@@ -4,7 +4,7 @@ import {API} from "../../classes/API";
 
 @Command({
     aliases: ["deletedomain", "domain_delete"],
-    groups: ["owners"],
+    groups: ["Owners"],
     name: "delete_domain"
 })
 export class DeleteDomain implements Executor {
