@@ -1,10 +1,10 @@
-import {Blueprint, Override} from '@dxz/blueprint';
+import {Blueprint} from '@dxz/blueprint';
 import {join} from 'path';
 import {parse as parser} from 'yaml';
-import {commandList, groups} from '../groups/Plugins';
+import {commandList} from '../Plugins';
 import {eventList} from '../events/EventList';
-import {FullConfig} from "../structures/Types";
-import {apiExtension} from "../structures/Extensions";
+import {FullConfig, GroupType} from '../structures/Types';
+import {apiExtension} from '../structures/Extensions';
 
 export class Client extends Blueprint<FullConfig> {
   constructor() {
@@ -12,28 +12,32 @@ export class Client extends Blueprint<FullConfig> {
   }
 
   private setupCommands() {
-    for (const command of commandList) {
+    commandList.forEach(command => {
       this.registry.commands.register(command.commandClass);
-    }
+    });
   }
 
   private setupGroups() {
-    // Register the developer group, always.
-    this.registry.groups.register("Owners", {
-      overrides: this.core.config.developers.map((user) => ({type: "user", id: user})),
-      permissions: ["guild.administrator"]
-    });
-    // Then proceed to add the rest of the groups.
-    for (const group of groups) {
+    const groupArray: GroupType = [
+      {groupName: 'Admin', groupPermissions: ['guild.administrator']},
+      {groupName: 'User', groupPermissions: ['messages.send', 'messages.read']},
+      {
+        groupName: 'Mod',
+        extends: ['User'],
+        groupPermissions: ['messages.manage'],
+      },
+    ];
+    groupArray.forEach(group => {
       this.registry.groups.register(group.groupName, {
-        inherits: group.extends ?? undefined,
         permissions: group.groupPermissions,
+        inherits: group.extends || undefined,
       });
-    }
+    });
   }
 
   private setupEvents() {
     for (const event of eventList) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       this.registry.events.register(event.eventName, event.eventClass);
     }

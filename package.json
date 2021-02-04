@@ -22,8 +22,8 @@
   },
   "homepage": "https://crato.gg",
   "dependencies": {
-    "@dxz/blueprint": "^2.2.4",
-    "@helperdiscord/centra": "^1.1.4",
+    "@dxz/blueprint": "^2.2.5",
+    "axios": "^0.21.1",
     "common-tags": "^1.8.0",
     "eris": "^0.14.0",
     "helperis": "^1.2.4",
@@ -32,8 +32,8 @@
   },
   "devDependencies": {
     "@types/common-tags": "^1.8.0",
-    "@types/node": "^14.14.22",
+    "@types/node": "^14.14.24",
     "gts": "^3.1.0",
-    "typescript": "^4.0.3"
+    "typescript": "^4.1.3"
   }
 }
