@@ -20,6 +20,8 @@ crato:
   boosterRole: ""
   boostChannel: ""
 
+mode: prod
+
 developers:
   - 100690330336129024
   - 438888690652020737

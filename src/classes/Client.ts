@@ -1,9 +1,9 @@
-import {Blueprint} from '@dxz/blueprint';
+import {bindHooks, Blueprint} from '@dxz/blueprint';
 import {join} from 'path';
 import {parse as parser} from 'yaml';
 import {commandList} from '../Plugins';
 import {eventList} from '../events/EventList';
-import {FullConfig, GroupType} from '../structures/Types';
+import {FullConfig} from '../structures/Types';
 import {apiExtension} from '../structures/Extensions';
 
 export class Client extends Blueprint<FullConfig> {
@@ -12,27 +12,9 @@ export class Client extends Blueprint<FullConfig> {
   }
 
   private setupCommands() {
-    commandList.forEach(command => {
-      this.registry.commands.register(command.commandClass);
-    });
-  }
-
-  private setupGroups() {
-    const groupArray: GroupType = [
-      {groupName: 'Admin', groupPermissions: ['guild.administrator']},
-      {groupName: 'User', groupPermissions: ['messages.send', 'messages.read']},
-      {
-        groupName: 'Mod',
-        extends: ['User'],
-        groupPermissions: ['messages.manage'],
-      },
-    ];
-    groupArray.forEach(group => {
-      this.registry.groups.register(group.groupName, {
-        permissions: group.groupPermissions,
-        inherits: group.extends || undefined,
-      });
-    });
+    for (const {commandClass} of commandList) {
+      this.registry.commands.register(commandClass);
+    }
   }
 
   private setupEvents() {
@@ -45,8 +27,12 @@ export class Client extends Blueprint<FullConfig> {
 
   async init() {
     try {
+      if (this.core.config.mode === 'dev')
+        bindHooks(
+          [this.registry.commands, this.registry.events, this.registry.groups],
+          callback => console.log(callback)
+        );
       this.setupCommands();
-      this.setupGroups();
       this.setupEvents();
       this.inject(apiExtension);
     } catch (e) {

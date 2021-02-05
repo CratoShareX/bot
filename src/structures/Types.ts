@@ -1,12 +1,14 @@
-import {BaseConfig, PermissionString} from '@dxz/blueprint';
+import {BaseConfig, Override, PermissionString} from '@dxz/blueprint';
 
 export type GroupType = Array<{
-  groupName: string;
-  extends?: string[];
+  key: string;
+  inherits?: string[];
+  overrides?: Override[];
   groupPermissions: PermissionString[];
 }>;
 
 interface CratoConfig {
+  mode: 'prod' | 'dev';
   crato: {
     baseURL: string;
     apiKey: string;

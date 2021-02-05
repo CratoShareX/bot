@@ -6,5 +6,5 @@ export async function error(
   err: Error,
   id: number
 ) {
-  return ref.core.logger?.getLogger(`Shard ${id}`).fatal(err);
+  return ref.core.logger?.getLogger(`Shard ${id}`).error(err);
 }
