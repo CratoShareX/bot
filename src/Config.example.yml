@@ -1,6 +1,6 @@
 bot:
-  prefix: "<"
-  token: ""
+  prefix: '<'
+  token: ''
   options:
     compress: true
     intents:
@@ -15,13 +15,13 @@ logging:
     default: {appenders: ['default'], level: 'debug'}
 
 crato:
-  baseURL: ""
-  apiKey: ""
-  boosterRole: ""
-  boostChannel: ""
+  baseURL: ''
+  apiKey: ''
+  boosterRole: ''
+  boostChannel: ''
 
 mode: prod
 
 developers:
-  - 100690330336129024
-  - 438888690652020737
+  - '100690330336129024'
+  - '438888690652020737'
