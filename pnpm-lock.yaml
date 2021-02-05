@@ -1,5 +1,5 @@
 dependencies:
-  '@dxz/blueprint': 2.3.0
+  '@dxz/blueprint': 2.3.1
   axios: 0.21.1
   common-tags: 1.8.0
   eris: 0.14.0
@@ -31,7 +31,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-kocDQvIbgMKlWxXe9fof3TQ+gkIPOUSEYhJjqUjvKMez3krV7vbzYCDq39Oj11UAVK7JqPVGQPlgE85dPNlQww==
-  /@dxz/blueprint/2.3.0:
+  /@dxz/blueprint/2.3.1:
     dependencies:
       eris: 0.14.0
       log4js: 6.3.0
@@ -42,7 +42,7 @@ packages:
     engines:
       node: '>=12.0.0'
     resolution:
-      integrity: sha512-qp9BHy/FzyGi1Z1EsQTg7BNCyeXRy5CSSJ0015i7CWodpVqsxFRr1slN7kMeWRihxk0VybhAs0kwNekZwKfF2w==
+      integrity: sha512-VUpibJ3nV1Uyn/ufxW8Y0C+Hu9a2GABD4FizwlxEcVDoIxCdF6QzsIZeH9V0Si9yimxQGaowG47PyROoDo5hDw==
   /@eslint/eslintrc/0.3.0:
     dependencies:
       ajv: 6.12.6
@@ -2637,7 +2637,7 @@ packages:
     resolution:
       integrity: sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==
 specifiers:
-  '@dxz/blueprint': ^2.3.0
+  '@dxz/blueprint': ^2.3.1
   '@types/common-tags': ^1.8.0
   '@types/node': ^14.14.24
   axios: ^0.21.1
