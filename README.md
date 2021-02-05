@@ -6,8 +6,8 @@
 - First, edit the `Config.yml` file in the `src` folder and provide values for each of the required arguments. An example config is found below:
 ```yaml
 bot:
-  prefix: "<"
-  token: "keepyatokensafe"
+  prefix: '<'
+  token: ''
   options:
     compress: true
     intents:
@@ -22,14 +22,16 @@ logging:
     default: {appenders: ['default'], level: 'debug'}
 
 crato:
-  baseURL: "https://api.crato.gg"
-  apiKey: "dontexploitcratopls"
-  boosterRole: "797666878880874497"
-  boostChannel: "803026705358389258"
+  baseURL: ''
+  apiKey: ''
+  boosterRole: ''
+  boostChannel: ''
+
+mode: prod # Keep this at prod (usually)
 
 developers:
-  - 100690330336129024
-  - 438888690652020737
+  - '100690330336129024'
+  - '438888690652020737'
 ```
 - Then, run `pnpm i` to install all the dependencies *(Note: if you don't have pnpm, install it using `npm i -g pnpm`).*
 - After finishing the installation, run `npm run build`, then **copy the `Config.yml` into the `dist` folder.**
