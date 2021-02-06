@@ -1,19 +1,16 @@
-import {
-  BaseConfig,
-  Blueprint,
-  Command,
-  Executor,
-  Message,
-} from '@dxz/blueprint';
+import {Blueprint, Command, Message} from '@dxz/blueprint';
 import {stripIndents} from 'common-tags';
+import {FullConfig} from '../../structures/Types';
 
-@Command({
-  aliases: [],
-  groups: ['User'],
-  name: 'ping',
-})
-export class Ping implements Executor {
-  async callback(ctx: Message, args: string[], ref: Blueprint<BaseConfig>) {
+export class Ping extends Command<FullConfig> {
+  constructor() {
+    super('ping', {
+      aliases: [],
+      groups: ['User'],
+    });
+  }
+
+  async callback(ctx: Message, args: string[], ref: Blueprint<FullConfig>) {
     const msg = await ctx.channel.createMessage('Pinging...');
     await msg.delete();
     return await ctx.channel.createMessage({

@@ -1,4 +1,4 @@
-import {bindHooks, Blueprint} from '@dxz/blueprint';
+import {Hook, Blueprint} from '@dxz/blueprint';
 import {join} from 'path';
 import {parse as parser} from 'yaml';
 import {commandList} from '../Plugins';
@@ -13,7 +13,7 @@ export class Client extends Blueprint<FullConfig> {
 
   private setupCommands() {
     for (const {commandClass} of commandList) {
-      this.registry.commands.register(commandClass);
+      this.registry.commands.register(new commandClass());
     }
   }
 
@@ -27,11 +27,14 @@ export class Client extends Blueprint<FullConfig> {
 
   async init() {
     try {
-      if (this.core.config.mode === 'dev')
-        bindHooks(
-          [this.registry.commands, this.registry.events, this.registry.groups],
-          callback => console.log(callback)
+      if (this.core.config.mode === 'dev') {
+        const hook = new Hook(res => console.log(res));
+        hook.bind(
+          this.registry.events,
+          this.registry.groups,
+          this.registry.commands
         );
+      }
       this.setupCommands();
       this.setupEvents();
       this.inject(apiExtension);

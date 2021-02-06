@@ -1,20 +1,17 @@
-import {
-  BaseConfig,
-  Blueprint,
-  Command,
-  Executor,
-  Message,
-} from '@dxz/blueprint';
+import {Blueprint, Command, Message} from '@dxz/blueprint';
 import {dispatch_error_embed} from '../../structures/EmbedTypes';
 import {API} from '../../classes/API';
+import {FullConfig} from '../../structures/Types';
 
-@Command({
-  aliases: ['count'],
-  groups: ['User'],
-  name: 'stats',
-})
-export class Stats implements Executor {
-  async callback(ctx: Message, args: string[], ref: Blueprint<BaseConfig>) {
+export class Stats extends Command<FullConfig> {
+  constructor() {
+    super('stats', {
+      aliases: ['statistics'],
+      groups: ['User'],
+    });
+  }
+
+  async callback(ctx: Message, args: string[], ref: Blueprint<FullConfig>) {
     try {
       const api = ref.registry.data.get('api') as API;
       const {totalFiles, totalUsers} = await api.getStats();

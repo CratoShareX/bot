@@ -1,23 +1,20 @@
-import {
-  BaseConfig,
-  Blueprint,
-  Command,
-  Executor,
-  Message,
-} from '@dxz/blueprint';
+import {Blueprint, Command, Message} from '@dxz/blueprint';
 import {
   dispatch_error_embed,
   dispatch_success_embed,
 } from '../../structures/EmbedTypes';
 import {API} from '../../classes/API';
+import {FullConfig} from '../../structures/Types';
 
-@Command({
-  aliases: ['adddomain', 'domain_add'],
-  groups: ['developer'],
-  name: 'add_domain',
-})
-export class AddDomain implements Executor {
-  async callback(ctx: Message, args: string[], ref: Blueprint<BaseConfig>) {
+export class AddDomain extends Command<FullConfig> {
+  constructor() {
+    super('add_domain', {
+      aliases: ['new_domain'],
+      groups: ['developer'],
+    });
+  }
+
+  async callback(ctx: Message, args: string[], ref: Blueprint<FullConfig>) {
     if (!args[0] || !args[1] || !args[2] || !args[3] || !args[4]) {
       return await dispatch_error_embed(ctx, 'Please provide all arguments.');
     }

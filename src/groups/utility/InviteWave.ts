@@ -1,23 +1,20 @@
-import {
-  BaseConfig,
-  Blueprint,
-  Command,
-  Executor,
-  Message,
-} from '@dxz/blueprint';
+import {Blueprint, Command, Message} from '@dxz/blueprint';
 import {
   dispatch_error_embed,
   dispatch_success_embed,
 } from '../../structures/EmbedTypes';
 import {API} from '../../classes/API';
+import {FullConfig} from '../../structures/Types';
 
-@Command({
-  aliases: ['invitewave'],
-  groups: ['developer'],
-  name: 'invite_wave',
-})
-export class InviteWave implements Executor {
-  async callback(ctx: Message, args: string[], ref: Blueprint<BaseConfig>) {
+export class InviteWave extends Command<FullConfig> {
+  constructor() {
+    super('invite_wave', {
+      aliases: ['invitewave'],
+      groups: ['developer'],
+    });
+  }
+
+  async callback(ctx: Message, args: string[], ref: Blueprint<FullConfig>) {
     try {
       const api = ref.registry.data.get('api') as API;
       await api.inviteWave();

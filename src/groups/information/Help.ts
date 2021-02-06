@@ -1,22 +1,19 @@
-import {
-  BaseConfig,
-  Blueprint,
-  Command,
-  Executor,
-  Message,
-} from '@dxz/blueprint';
+import {Blueprint, Command, Message} from '@dxz/blueprint';
 import {getCommandList} from '../../structures/GetCommandList';
 import {MessageEmbed} from 'helperis';
 import {stripIndents} from 'common-tags';
 import {dispatch_error_embed} from '../../structures/EmbedTypes';
+import {FullConfig} from '../../structures/Types';
 
-@Command({
-  aliases: [],
-  groups: ['User'],
-  name: 'help',
-})
-export class Help implements Executor {
-  async callback(ctx: Message, args: string[], ref: Blueprint<BaseConfig>) {
+export class Help extends Command<FullConfig> {
+  constructor() {
+    super('help', {
+      aliases: [],
+      groups: ['User'],
+    });
+  }
+
+  async callback(ctx: Message, args: string[], ref: Blueprint<FullConfig>) {
     if (args[0]) {
       try {
         const commandList = await getCommandList(ref);
@@ -30,7 +27,7 @@ export class Help implements Executor {
             .addField(
               'Aliases',
               `${
-                resolvedCmd?.cmdAliases.join(', ')
+                resolvedCmd?.cmdAliases?.join(', ')
                   ? resolvedCmd?.cmdAliases.join(', ')
                   : 'None'
               }`,
@@ -39,7 +36,7 @@ export class Help implements Executor {
             .addField(
               'Groups',
               `${
-                resolvedCmd?.cmdGroups.join(', ')
+                resolvedCmd?.cmdGroups?.join(', ')
                   ? resolvedCmd?.cmdGroups.join(', ')
                   : 'Everyone'
               }`,
@@ -67,15 +64,15 @@ export class Help implements Executor {
         embed.setTitle('Help Menu');
         for (const {cmdName, cmdAliases, cmdGroups} of commandList) {
           embed.addField(
-            cmdName,
+            cmdName!,
             stripIndents`
                             Aliases: **${
-                              cmdAliases.join(', ')
+                              cmdAliases?.join(', ')
                                 ? cmdAliases.join(', ')
                                 : 'None'
                             }**
                             Permission Groups: **${
-                              cmdGroups.join(', ')
+                              cmdGroups?.join(', ')
                                 ? cmdGroups.join(', ')
                                 : 'Everyone'
                             }**

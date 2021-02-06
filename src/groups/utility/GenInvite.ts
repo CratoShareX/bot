@@ -1,20 +1,17 @@
-import {
-  BaseConfig,
-  Blueprint,
-  Command,
-  Executor,
-  Message,
-} from '@dxz/blueprint';
+import {Blueprint, Command, Message} from '@dxz/blueprint';
 import {dispatch_error_embed} from '../../structures/EmbedTypes';
 import {API} from '../../classes/API';
+import {FullConfig} from '../../structures/Types';
 
-@Command({
-  aliases: ['invite'],
-  groups: ['Admin'],
-  name: 'geninv',
-})
-export class GenInvite implements Executor {
-  async callback(ctx: Message, args: string[], ref: Blueprint<BaseConfig>) {
+export class GenInvite extends Command<FullConfig> {
+  constructor() {
+    super('geninv', {
+      aliases: ['generate_invite'],
+      groups: ['Admin'],
+    });
+  }
+
+  async callback(ctx: Message, args: string[], ref: Blueprint<FullConfig>) {
     try {
       const api = ref.registry.data.get('api') as API;
       const {link, code} = await api.generateInvite();

@@ -1,20 +1,17 @@
-import {
-  BaseConfig,
-  Blueprint,
-  Command,
-  Executor,
-  Message,
-} from '@dxz/blueprint';
+import {Blueprint, Command, Message} from '@dxz/blueprint';
 import {dispatch_error_embed} from '../../structures/EmbedTypes';
 import {API} from '../../classes/API';
+import {FullConfig} from '../../structures/Types';
 
-@Command({
-  aliases: ['search'],
-  groups: ['User'],
-  name: 'lookup',
-})
-export class Lookup implements Executor {
-  async callback(ctx: Message, args: string[], ref: Blueprint<BaseConfig>) {
+export class Lookup extends Command<FullConfig> {
+  constructor() {
+    super('lookup', {
+      aliases: ['search'],
+      groups: ['User'],
+    });
+  }
+
+  async callback(ctx: Message, args: string[], ref: Blueprint<FullConfig>) {
     if (!args[0]) {
       return await dispatch_error_embed(ctx, 'Please provide an identifier.');
     }

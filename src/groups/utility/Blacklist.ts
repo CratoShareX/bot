@@ -1,23 +1,20 @@
-import {
-  BaseConfig,
-  Blueprint,
-  Command,
-  Executor,
-  Message,
-} from '@dxz/blueprint';
+import {Blueprint, Command, Message} from '@dxz/blueprint';
 import {
   dispatch_error_embed,
   dispatch_success_embed,
 } from '../../structures/EmbedTypes';
 import {API} from '../../classes/API';
+import {FullConfig} from '../../structures/Types';
 
-@Command({
-  aliases: ['disable_account'],
-  groups: ['Admin'],
-  name: 'blacklist',
-})
-export class Blacklist implements Executor {
-  async callback(ctx: Message, args: string[], ref: Blueprint<BaseConfig>) {
+export class Blacklist extends Command<FullConfig> {
+  constructor() {
+    super('blacklist', {
+      aliases: ['disable_account'],
+      groups: ['Admin'],
+    });
+  }
+
+  async callback(ctx: Message, args: string[], ref: Blueprint<FullConfig>) {
     if (!args[0]) {
       return await dispatch_error_embed(ctx, 'No identifier provided.');
     }
