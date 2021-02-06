@@ -1,5 +1,5 @@
 dependencies:
-  '@dxz/blueprint': 2.4.0
+  '@dxz/blueprint': 2.4.1
   '@helperdiscord/centra': 2.0.0
   common-tags: 1.8.0
   eris: 0.14.0
@@ -31,7 +31,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-kocDQvIbgMKlWxXe9fof3TQ+gkIPOUSEYhJjqUjvKMez3krV7vbzYCDq39Oj11UAVK7JqPVGQPlgE85dPNlQww==
-  /@dxz/blueprint/2.4.0:
+  /@dxz/blueprint/2.4.1:
     dependencies:
       eris: 0.14.0
       log4js: 6.3.0
@@ -41,7 +41,7 @@ packages:
     engines:
       node: '>=12.0.0'
     resolution:
-      integrity: sha512-QEHKmVXxrsmFNBfQbU4DkmqCtzeKIy4j0381xOqv+t6V4j/cfTn5JiRw/qTXl3KodWVbeLI5/t3I2zXgF35IYQ==
+      integrity: sha512-Awq1RSwPvlOR9HSWR1z+BMlDSQSN3g2cSYxe+dUndQnvNJZZEVjJmbcF0n9Av7R1wYjCdqVzMjhomdCsN+eDvg==
   /@eslint/eslintrc/0.3.0:
     dependencies:
       ajv: 6.12.6
@@ -2628,7 +2628,7 @@ packages:
     resolution:
       integrity: sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==
 specifiers:
-  '@dxz/blueprint': ^2.4.0
+  '@dxz/blueprint': ^2.4.1
   '@helperdiscord/centra': ^2.0.0
   '@types/common-tags': ^1.8.0
   '@types/node': ^14.14.24
