@@ -1,10 +1,11 @@
-import Axios, {Method} from 'axios';
+import req from '@helperdiscord/centra';
 import {Internals} from '@dxz/blueprint';
 import {FullConfig} from '../structures/Types';
+import {HTTPMethod} from '@helperdiscord/centra/dist/lib/CentraRequest';
 
 interface Req {
   endpoint: string;
-  method: Method;
+  method: HTTPMethod;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body?: any;
 }
@@ -20,18 +21,13 @@ export class API {
       const baseURL = this.config.config.crato.baseURL;
       const apiKey = this.config.config.crato.apiKey;
 
-      const res = await Axios({
-        method: data.method,
-        headers: {
-          Authorization: apiKey,
-        },
-        url: `${baseURL}${data.endpoint}`,
-        data: {
-          ...data.body,
-        },
-      });
+      const res = await req(`${baseURL}${data.endpoint}`)
+        .header('Authorization', apiKey)
+        .method(data.method)
+        .body(data.body)
+        .send();
 
-      return res.data;
+      return res.json();
     } catch (e) {
       throw new Error(e.message);
     }
