@@ -21,7 +21,7 @@ export class Premium extends Command<FullConfig> {
         'No argument provided for member.'
       );
     }
-    if (!isNaN(parseInt(args[0]))) {
+    if (isNaN(parseInt(args[0]))) {
       return await dispatch_error_embed(ctx, 'UID is not a number.');
     }
     try {
