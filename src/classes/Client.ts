@@ -13,7 +13,7 @@ export class Client extends Blueprint<FullConfig> {
 
   private setupCommands() {
     for (const {commandClass} of commandList) {
-      this.registry.commands.register(new commandClass());
+      this.registry.commands.register(commandClass);
     }
   }
 

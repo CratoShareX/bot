@@ -13,46 +13,46 @@ import {Groups} from './groups/utility/Groups';
 export const commandList = [
   {
     commandName: 'ping',
-    commandClass: Ping,
+    commandClass: new Ping(),
   },
   {
     commandName: 'add_domain',
-    commandClass: AddDomain,
+    commandClass: new AddDomain(),
   },
   {
     commandName: 'delete_domain',
-    commandClass: DeleteDomain,
+    commandClass: new DeleteDomain(),
   },
   {
     commandName: 'lookup',
-    commandClass: Lookup,
+    commandClass: new Lookup(),
   },
   {
     commandName: 'geninv',
-    commandClass: GenInvite,
+    commandClass: new GenInvite(),
   },
   {
     commandName: 'invite_wave',
-    commandClass: InviteWave,
+    commandClass: new InviteWave(),
   },
   {
     commandName: 'blacklist',
-    commandClass: Blacklist,
+    commandClass: new Blacklist(),
   },
   {
     commandName: 'help',
-    commandClass: Help,
+    commandClass: new Help(),
   },
   {
     commandName: 'stats',
-    commandClass: Stats,
+    commandClass: new Stats(),
   },
   {
     commandName: 'premium',
-    commandClass: Premium,
+    commandClass: new Premium(),
   },
   {
     commandName: 'group_info',
-    commandClass: Groups,
+    commandClass: new Groups(),
   },
 ];
