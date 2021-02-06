@@ -22,7 +22,7 @@
   },
   "homepage": "https://crato.gg",
   "dependencies": {
-    "@dxz/blueprint": "^2.4.1",
+    "@dxz/blueprint": "^2.4.2",
     "@helperdiscord/centra": "^2.0.0",
     "common-tags": "^1.8.0",
     "eris": "^0.14.0",
