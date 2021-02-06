@@ -22,12 +22,12 @@ export class Stats extends Command<FullConfig> {
           fields: [
             {
               name: 'Files',
-              value: `\`${totalFiles}\``,
+              value: `\`${parseInt(totalFiles).toLocaleString()}\``,
               inline: true,
             },
             {
               name: 'Users',
-              value: `\`${totalUsers}\``,
+              value: `\`${parseInt(totalUsers).toLocaleString()}\``,
               inline: true,
             },
           ],

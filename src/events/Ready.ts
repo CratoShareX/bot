@@ -8,18 +8,14 @@ export async function ready(ref: Blueprint<FullConfig>) {
   // Set API Status on fire
   const {total} = await api.getFileCount();
   ref.core.client.editStatus('online', {
-    name: `over ${new Intl.NumberFormat('en-US', {style: 'decimal'}).format(
-      total
-    )} files`,
+    name: `over ${parseInt(total).toLocaleString()} files`,
     type: 3,
   });
   // Proceed to do it on an interval
   setInterval(async () => {
     const {total} = await api.getFileCount();
     ref.core.client.editStatus('online', {
-      name: `over ${new Intl.NumberFormat('en-US', {style: 'decimal'}).format(
-        total
-      )} files`,
+      name: `over ${parseInt(total).toLocaleString()} files`,
       type: 3,
     });
   }, 300000);
