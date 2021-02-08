@@ -66,7 +66,7 @@ export class StatusAPI {
               value: 'None',
             },
             {
-              name: 'Description',
+              name: 'Incident Description',
               value: 'None',
             },
           ],
