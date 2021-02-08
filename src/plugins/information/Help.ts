@@ -29,8 +29,14 @@ export class Help extends Command<FullConfig> {
             });
           }
         }
-        if (cmdList?.find(c => c.commandName === args[0])) {
-          const command = cmdList?.find(c => c.commandName === args[0]);
+        if (
+          cmdList?.find(
+            c => c.commandName === args[0] || c.commandAliases.includes(args[0])
+          )
+        ) {
+          const command = cmdList?.find(
+            c => c.commandName === args[0] || c.commandAliases.includes(args[0])
+          );
           const embed = new MessageEmbed()
             .setTitle(`Help for ${command?.commandName}`)
             .setColor('0x03fc6b')
