@@ -1,6 +1,6 @@
 import {Internals, Message} from '@dxz/blueprint';
 import req from '@helperdiscord/centra';
-import {Guild, TextChannel} from 'eris';
+import {Guild, NewsChannel} from 'eris';
 import {getGuild} from '../structures/Functions';
 import {FullConfig} from '../structures/Types';
 import {Req} from './API';
@@ -55,22 +55,24 @@ export class StatusAPI {
 
     (guild?.channels.get(
       this.internals.config.crato.statusChannel
-    ) as TextChannel).createMessage({
-      embed: {
-        title: `Crato Status - ${status}`,
-        color: color,
-        fields: [
-          {
-            name: 'Zone Affected',
-            value: id,
-          },
-          {
-            name: 'Incident Description',
-            value: reason,
-          },
-        ],
-      },
-    });
+    ) as NewsChannel)
+      .createMessage({
+        embed: {
+          title: `Crato Status - ${status}`,
+          color: color,
+          fields: [
+            {
+              name: 'Zone Affected',
+              value: id,
+            },
+            {
+              name: 'Incident Description',
+              value: reason,
+            },
+          ],
+        },
+      })
+      .then(c => c.crosspost());
   }
 
   async partialOutage(ctx: Message, id: ComponentStrings, reason: string) {
