@@ -53,10 +53,29 @@ export class StatusAPI {
     else if (status === 'Operational') color = 0x6cfc05;
     else color = 0xffffff;
 
-    (guild?.channels.get(
-      this.internals.config.crato.statusChannel
-    ) as NewsChannel)
-      .createMessage({
+    if (status === 'Operational') {
+      (guild?.channels.get(
+        this.internals.config.crato.statusChannel
+      ) as NewsChannel).editMessage('808449721973735505', {
+        embed: {
+          title: 'Crato Status',
+          color: 0x6cfc05,
+          fields: [
+            {
+              name: 'Zone Affected',
+              value: 'None',
+            },
+            {
+              name: 'Description',
+              value: 'None',
+            },
+          ],
+        },
+      });
+    } else {
+      (guild?.channels.get(
+        this.internals.config.crato.statusChannel
+      ) as NewsChannel).editMessage('808449721973735505', {
         embed: {
           title: `Crato Status - ${status}`,
           color: color,
@@ -71,8 +90,8 @@ export class StatusAPI {
             },
           ],
         },
-      })
-      .then(c => c.crosspost());
+      });
+    }
   }
 
   async partialOutage(ctx: Message, id: ComponentStrings, reason: string) {
