@@ -7,7 +7,7 @@ export async function guildMemberUpdate(
   ref: Blueprint<FullConfig>,
   member: Member
 ) {
-  if (!member.roles.find(role => role === ref.core.config.crato.boosterRole)) {
+  if (!member.roles.includes(ref.core.config.crato.boosterRole)) {
     return;
   } else {
     try {
