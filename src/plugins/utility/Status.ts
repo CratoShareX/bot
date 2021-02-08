@@ -22,6 +22,21 @@ export class Status extends Command<FullConfig> {
     if (identifier === 'Website' && args[1] === '1') {
       await statusApi.operational(ctx, 'Website', 'None');
       return await dispatch_success_embed(ctx, 'Set status to `Operational`.');
+    } else if (identifier === 'API' && args[1] === '1') {
+      await statusApi.operational(ctx, 'API', 'None');
+      return await dispatch_success_embed(ctx, 'Set status to `Operational`.');
+    } else if (identifier === 'CDN' && args[1] === '1') {
+      await statusApi.operational(ctx, 'CDN', 'None');
+      return await dispatch_success_embed(ctx, 'Set status to `Operational`.');
+    } else if (identifier === 'Cloudflare' && args[1] === '1') {
+      await statusApi.operational(ctx, 'Cloudflare', 'None');
+      return await dispatch_success_embed(ctx, 'Set status to `Operational`.');
+    } else if (identifier === 'Discord Bot' && args[1] === '1') {
+      await statusApi.operational(ctx, 'Discord Bot', 'None');
+      return await dispatch_success_embed(ctx, 'Set status to `Operational`.');
+    } else if (identifier === 'Media Proxy' && args[1] === '1') {
+      await statusApi.operational(ctx, 'Media Proxy', 'None');
+      return await dispatch_success_embed(ctx, 'Set status to `Operational`.');
     } else {
       if (!args[2])
         return await dispatch_error_embed(
