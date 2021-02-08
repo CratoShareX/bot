@@ -26,6 +26,11 @@ crato:
   apiKey: ''
   boosterRole: ''
   boostChannel: ''
+  statusChannel: ''
+
+status:
+  baseURL: ''
+  apiKey: ''
 
 mode: prod # Keep this at prod (usually)
 
