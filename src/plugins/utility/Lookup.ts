@@ -1,7 +1,7 @@
 import {Blueprint, Command, Message} from '@dxz/blueprint';
 import {dispatch_error_embed} from '../../structures/EmbedTypes';
 import {API} from '../../classes/API';
-import {FullConfig} from '../../structures/Types';
+import {FullConfig, IPartialUser} from '../../structures/Types';
 
 export class Lookup extends Command<FullConfig> {
   constructor() {
@@ -17,7 +17,18 @@ export class Lookup extends Command<FullConfig> {
     }
     try {
       const api = ref.registry.data.get('api') as API;
-      const {user} = await api.getUser(args[0] ?? ctx.mentions[0].id);
+      const {user} = (await api.getUser(
+        args[0] ?? ctx.mentions[0].id
+      )) as IPartialUser;
+      if (!user) {
+        return await dispatch_error_embed(
+          ctx,
+          'No user by this identifier exists.'
+        );
+      }
+      let isPremium: string;
+      if (!user.premium) isPremium = 'False';
+      else isPremium = 'True';
       return await ctx.channel.createMessage({
         embed: {
           title: `${user.username} - ${user.uid}`,
@@ -35,12 +46,12 @@ export class Lookup extends Command<FullConfig> {
             },
             {
               name: 'UID',
-              value: user.uid,
+              value: user.uid.toString(),
               inline: true,
             },
             {
               name: 'Uploads',
-              value: user.uploads,
+              value: user.uploads.toLocaleString(),
               inline: true,
             },
             {
@@ -55,7 +66,7 @@ export class Lookup extends Command<FullConfig> {
             },
             {
               name: 'Premium',
-              value: user.premium ?? 'false',
+              value: isPremium,
               inline: true,
             },
             {

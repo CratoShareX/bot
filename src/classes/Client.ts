@@ -1,19 +1,19 @@
 import {Hook, Blueprint} from '@dxz/blueprint';
 import {join} from 'path';
 import {parse as parser} from 'yaml';
-import {commandList} from '../Plugins';
+import {pluginList} from '../Plugins';
 import {eventList} from '../events/EventList';
 import {FullConfig} from '../structures/Types';
-import {apiExtension} from '../structures/Extensions';
+import {apiExtension, statusApiExtenstion} from '../structures/Extensions';
 
 export class Client extends Blueprint<FullConfig> {
   constructor() {
     super(join(__dirname, '../Config.yml'), {parser});
   }
 
-  private setupCommands() {
-    for (const {commandClass} of commandList) {
-      this.registry.commands.register(commandClass);
+  private setupPlugins() {
+    for (const {pluginClass} of pluginList) {
+      this.registry.plugins.register(pluginClass);
     }
   }
 
@@ -32,12 +32,13 @@ export class Client extends Blueprint<FullConfig> {
         hook.bind(
           this.registry.events,
           this.registry.groups,
-          this.registry.commands
+          this.registry.plugins
         );
       }
-      this.setupCommands();
+      this.setupPlugins();
       this.setupEvents();
       this.inject(apiExtension);
+      this.inject(statusApiExtenstion);
     } catch (e) {
       this.core.logger?.getLogger('Client').fatal(e.message);
     }

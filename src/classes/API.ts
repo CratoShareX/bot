@@ -3,7 +3,7 @@ import {Internals} from '@dxz/blueprint';
 import {FullConfig} from '../structures/Types';
 import {HTTPMethod} from '@helperdiscord/centra/dist/lib/CentraRequest';
 
-interface Req {
+export interface Req {
   endpoint: string;
   method: HTTPMethod;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,15 +11,15 @@ interface Req {
 }
 
 export class API {
-  config: Internals<FullConfig>;
-  constructor(config: Internals<FullConfig>) {
-    this.config = config;
+  private internals: Internals<FullConfig>;
+  constructor(internals: Internals<FullConfig>) {
+    this.internals = internals;
   }
 
-  async request(data: Req) {
+  private async request(data: Req) {
     try {
-      const baseURL = this.config.config.crato.baseURL;
-      const apiKey = this.config.config.crato.apiKey;
+      const baseURL = this.internals.config.crato.baseURL;
+      const apiKey = this.internals.config.crato.apiKey;
 
       const res = await req(`${baseURL}${data.endpoint}`)
         .header('Authorization', apiKey)
