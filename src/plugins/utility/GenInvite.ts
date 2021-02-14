@@ -7,7 +7,7 @@ export class GenInvite extends Command<FullConfig> {
   constructor() {
     super('geninv', {
       aliases: ['generate_invite'],
-      groups: ['Admin'],
+      groups: ['Staff'],
     });
   }
 
