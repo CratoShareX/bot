@@ -4,8 +4,8 @@ export const groupArray: GroupType = [
   {key: 'Admin', groupPermissions: ['guild.administrator']},
   {key: 'User', groupPermissions: ['messages.send', 'messages.read']},
   {
-    key: 'Mod',
+    key: 'Staff',
     inherits: ['User'],
-    groupPermissions: ['messages.manage'],
+    groupPermissions: ['members.ban'],
   },
 ];
